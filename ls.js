@@ -20,7 +20,7 @@ if (process.argv.length == 4)
 	var param = process.argv[3]
 	if (param == '-R')
 	{
-		recursive = false
+		recursive = true
 	}
 }
 
@@ -33,27 +33,35 @@ function ls(rootPath, recursive)
 
      	if(fs.statSync(rootPath).isFile())
  		{
- 			console.log(rootPath)
- 			return [rootPath]
+ 			process.stdout.write(rootPath + '\n')
  		}
      
+     	
      	fs.readdir(rootPath).then(function(fileNames)
      	{
 	     	 for (let fileName of fileNames) 
 	     	 {
 	     	 	let filePath = path.join(rootPath, fileName)
-			 	let promise = ls(filePath, recursive)
-			    lspromises.push(promise)
+			 	
+			 	if(recursive)
+			 	{
+				 	ls(filePath, recursive)
+				}
+				else if(fs.statSync(filePath).isFile())
+				{
+					ls(filePath, recursive)
+				}
 	    	}
      	})
     	
-    	return   _.flatten(Promise.all(lspromises))
     } catch (e) {
         console.log(e.stack)
     }
 }
 
 ls(rootPath, recursive)
+
+
 
 
 
