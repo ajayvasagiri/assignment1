@@ -2,6 +2,8 @@
 
 "use strict";
 
+
+
 let fs = require('pn/fs')
 
 if (process.argv.length != 3) {
@@ -9,8 +11,15 @@ if (process.argv.length != 3) {
         process.exit(1);
 }
 
-fs.open(process.argv[2],'r').then(function(fd)
-{
-	fs.futimes(fd,Date.now()/1000,Date.now()/1000)
-})
+var filename = process.argv[2];
+fs.exists(filename,function (exists) {
+    if (exists) {
+    	var currentTime = new Date();
+        fs.utimes(filename,currentTime,currentTime);
+    } else {
+    	fs.open(filename,"w");
+    }
+});
+
+
 
