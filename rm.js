@@ -17,7 +17,6 @@ var rootPath = process.argv[2]
         if(data.isFile()){
            console.log("removing file"+rootPath)
             let data = await fs.unlink(rootPath)
-            console.log("removing file"+rootPath)
         }
         else{
         	 let fileNames =await fs.readdir(rootPath)
@@ -32,3 +31,5 @@ var rootPath = process.argv[2]
         console.log(e.stack)
     }
 }
+
+rm(rootPath)
