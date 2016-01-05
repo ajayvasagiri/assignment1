@@ -18,4 +18,4 @@ Completed:
 
 Walkthrough Gif:
 
-![Video Walkthrough]()
+![Video Walkthrough](assignment.gif)
