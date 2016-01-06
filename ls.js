@@ -31,9 +31,9 @@ async function ls(rootPath, recursive)
      {
      	let stats = await (fs.stat(rootPath))
      	
+     	process.stdout.write(rootPath + '\n')
      	if(stats.isFile())
  		{
- 			process.stdout.write(rootPath + '\n')
  			return
  		}
      
