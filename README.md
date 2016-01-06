@@ -14,7 +14,7 @@ Completed:
 * [X] Required: `ls.js` recursively lists the files of the first argument
 * [X] Required: `mkdir.js` create a directory at the first argument
 * [X] Required: `rm.js` deletes any file or directory at the first argument 
-* [X] Optional: `ln.js` creates a symlink from the second argument to the first argument
+* [] Optional: `ln.js` creates a symlink from the second argument to the first argument
 
 Walkthrough Gif:
 
